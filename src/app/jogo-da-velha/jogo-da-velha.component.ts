@@ -14,7 +14,7 @@ export class JogoDaVelhaComponent implements OnInit {
   ['', '', '']
   ];
   public gameOver: boolean = false;
-  public gameWon: boolean = true;
+  public gameWon: boolean = false;
 
   public winner: string = '';
 
@@ -70,6 +70,7 @@ export class JogoDaVelhaComponent implements OnInit {
           this.insideGame[0][2] === this.currentPlayer))
     ) {
       this.winner = this.currentPlayer;
+      this.currentPlayer = '';
       return true
     } else {
       return false
