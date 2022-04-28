@@ -1,0 +1,45 @@
+<div id="main">
+    <h1>Vikings vs Orcs</h1>
+    <p>Current player: <b>{{currentPlayer}}</b></p>
+
+    <table>
+        <tr>
+            <td (click)="playerAction(0, 0)" [ngClass]="{'viking': insideGame[0][0] === 'Viking',
+            'orc': insideGame[0][0] === 'Orc'}">{{insideGame[0][0]}}</td>
+            <td (click)="playerAction(0, 1)" [ngClass]="{'viking': insideGame[0][1] === 'Viking',
+            'orc': insideGame[0][1] === 'Orc'}">{{insideGame[0][1]}}</td>
+            <td (click)="playerAction(0, 2)" [ngClass]="{'viking': insideGame[0][2] === 'Viking',
+            'orc': insideGame[0][2] === 'Orc'}">{{insideGame[0][2]}}</td>
+        </tr>
+        <tr>
+            <td (click)="playerAction(1, 0)" [ngClass]="{'viking': insideGame[1][0] === 'Viking',
+            'orc': insideGame[1][0] === 'Orc'}">{{insideGame[1][0]}}</td>
+            <td (click)="playerAction(1, 1)" [ngClass]="{'viking': insideGame[1][1] === 'Viking',
+            'orc': insideGame[1][1] === 'Orc'}">{{insideGame[1][1]}}</td>
+            <td (click)="playerAction(1, 2)" [ngClass]="{'viking': insideGame[1][2] === 'Viking',
+            'orc': insideGame[1][2] === 'Orc'}">{{insideGame[1][2]}}</td>
+        </tr>
+        <tr>
+            <td (click)="playerAction(2, 0)" [ngClass]="{'viking': insideGame[2][0] === 'Viking',
+            'orc': insideGame[2][0] === 'Orc'}">{{insideGame[2][0]}}
+            </td>
+            <td (click)="playerAction(2, 1)" [ngClass]="{'viking': insideGame[2][1] === 'Viking',
+            'orc': insideGame[2][1] === 'Orc'}">{{insideGame[2][1]}}</td>
+            <td (click)="playerAction(2, 2)" [ngClass]="{'viking': insideGame[2][2] === 'Viking',
+            'orc': insideGame[2][2] === 'Orc'}">{{insideGame[2][2]}}</td>
+        </tr>
+    </table>
+    <div id="gameOver" *ngIf="gameOver">
+        <p>Game over!</p>
+        <p>A tie between vikings and orcs!</p>
+    </div>
+
+    <div id="winner" *ngIf="gameWon">
+        <p>Winner: {{winner}}</p>
+        <div [ngClass]="{'viking': winner === 'Viking',
+        'orc': winner === 'Orc'}"></div>
+        <p>Congratulations {{winner}}! <br> <br> Here's your prize: 💰 </p>
+    </div>
+
+    <button type="button" class="btn btn-success" (click)="resetGame()">New game</button>
+</div>
