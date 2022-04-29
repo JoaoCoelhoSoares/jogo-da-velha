@@ -1,5 +1,7 @@
 <div id="main">
     <h1>Vikings vs Orcs</h1>
+
+    <p>Tempo restante: <b>{{seconds}}</b> segundos</p>
     <p>Current player: <b>{{currentPlayer}}</b></p>
 
     <table>
@@ -41,5 +43,14 @@
         <p>Congratulations {{winner}}! <br> <br> Here's your prize: 💰 </p>
     </div>
 
-    <button type="button" class="btn btn-success" (click)="resetGame()">New game</button>
+    <div id="timeUp" *ngIf="seconds <= 0">
+        <p>Times up!</p>
+        <div id="imagens">
+            <div class="viking"></div>
+            <div class="orc"></div>
+        </div>
+        <p>A tie between vikings and orcs!</p>
+    </div>
+
+    <button type="button" (click)="reset()">New game</button>
 </div>

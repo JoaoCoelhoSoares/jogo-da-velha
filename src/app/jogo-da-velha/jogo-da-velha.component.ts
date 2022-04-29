@@ -9,18 +9,22 @@ export class JogoDaVelhaComponent implements OnInit {
 
   public currentPlayer: string = 'Viking';
   public cont: number = 0;
+  public seconds: number = 60;
   public insideGame: string[][] = [['', '', ''],
   ['', '', ''],
   ['', '', '']
   ];
   public gameOver: boolean = false;
   public gameWon: boolean = false;
+  public timer: any;
+
 
   public winner: string = '';
 
   constructor() { }
 
   ngOnInit(): void {
+    this.gameTimer();
   }
 
   playerAction(row: number, column: number) {
@@ -38,30 +42,30 @@ export class JogoDaVelhaComponent implements OnInit {
     }
 
     if (this.cont >= 9) {
+      clearInterval(this.timer);
       this.gameOver = true;
     }
   }
 
-  resetGame() {
+  reset() {
     this.insideGame = [['', '', ''], ['', '', ''], ['', '', '']];
     this.winner = '';
     this.cont = 0;
     this.currentPlayer = 'Viking';
     this.gameOver = false;
     this.gameWon = false;
+    this.seconds = 60;
+    this.gameTimer();
   }
 
   checkWinner = (row: number, col: number): boolean => {
     if (
-      // Horizontal win
       (this.insideGame[row][0] === this.currentPlayer &&
         this.insideGame[row][1] === this.currentPlayer &&
         this.insideGame[row][2] === this.currentPlayer) ||
-      // Vertical win
       (this.insideGame[0][col] === this.currentPlayer &&
         this.insideGame[1][col] === this.currentPlayer &&
         this.insideGame[2][col] === this.currentPlayer) ||
-      // Diagonal win
       ((this.insideGame[0][0] === this.currentPlayer &&
         this.insideGame[1][1] === this.currentPlayer &&
         this.insideGame[2][2] === this.currentPlayer) ||
@@ -71,11 +75,21 @@ export class JogoDaVelhaComponent implements OnInit {
     ) {
       this.winner = this.currentPlayer;
       this.currentPlayer = '';
+      clearInterval(this.timer);
       return true
     } else {
       return false
     }
   }
 
+  gameTimer() {
+    this.timer = setInterval(() => {
+      if (this.seconds > 0) {
+        this.seconds--;
+      } else {
+        clearInterval(this.timer);
+      }
+    }, 1000)
+  }
 
 }

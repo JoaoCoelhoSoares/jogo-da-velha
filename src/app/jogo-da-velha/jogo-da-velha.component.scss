@@ -10,7 +10,7 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    gap: 15px;
+    gap: 10px;
     -webkit-box-shadow: 5px 5px 15px 5px rgba(0, 0, 0, 0.65);
     box-shadow: 5px 5px 15px 5px rgba(0, 0, 0, 0.65);
 
@@ -58,7 +58,7 @@
 
     #winner {
         position: fixed;
-        top: 150px;
+        top: 170px;
         width: 320px;
         height: 320px;
         background-color: #60935D;
@@ -86,6 +86,39 @@
         }
     }
 
+    #timeUp {
+        position: fixed;
+        top: 170px;
+        width: 320px;
+        height: 320px;
+        background-color: #60935D;
+        color: #fff;
+        border-radius: 10px;
+        text-align: center;
+        font-size: 16pt;
+        font-weight: 500;
+        -webkit-box-shadow: 5px 5px 15px 5px rgba(0, 0, 0, 0.65);
+        box-shadow: 5px 5px 15px 5px rgba(0, 0, 0, 0.65);
+        align-content: center;
+
+        p {
+            padding: 13px;
+        }
+
+        #imagens {
+            display: flex;
+
+            div {
+                width: 120px;
+                height: 120px;
+
+                width: 50%;
+                padding-bottom: 30px;
+            }
+        }
+
+    }
+
     button {
         font-family: Roboto;
         font-size: 12pt;
@@ -103,7 +136,6 @@
         color: #14342B;
         font-weight: 600;
         background-color: #9db49b;
-
     }
 
 }
