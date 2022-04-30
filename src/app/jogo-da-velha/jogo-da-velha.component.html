@@ -1,36 +1,16 @@
 <div id="main">
     <h1>Vikings vs Orcs</h1>
 
-    <p>Tempo restante: <b>{{seconds}}</b> segundos</p>
+    <p>Time left: <b>{{seconds}}</b> seconds</p>
     <p>Current player: <b>{{currentPlayer}}</b></p>
 
     <table>
-        <tr>
-            <td (click)="playerAction(0, 0)" [ngClass]="{'viking': insideGame[0][0] === 'Viking',
-            'orc': insideGame[0][0] === 'Orc'}">{{insideGame[0][0]}}</td>
-            <td (click)="playerAction(0, 1)" [ngClass]="{'viking': insideGame[0][1] === 'Viking',
-            'orc': insideGame[0][1] === 'Orc'}">{{insideGame[0][1]}}</td>
-            <td (click)="playerAction(0, 2)" [ngClass]="{'viking': insideGame[0][2] === 'Viking',
-            'orc': insideGame[0][2] === 'Orc'}">{{insideGame[0][2]}}</td>
-        </tr>
-        <tr>
-            <td (click)="playerAction(1, 0)" [ngClass]="{'viking': insideGame[1][0] === 'Viking',
-            'orc': insideGame[1][0] === 'Orc'}">{{insideGame[1][0]}}</td>
-            <td (click)="playerAction(1, 1)" [ngClass]="{'viking': insideGame[1][1] === 'Viking',
-            'orc': insideGame[1][1] === 'Orc'}">{{insideGame[1][1]}}</td>
-            <td (click)="playerAction(1, 2)" [ngClass]="{'viking': insideGame[1][2] === 'Viking',
-            'orc': insideGame[1][2] === 'Orc'}">{{insideGame[1][2]}}</td>
-        </tr>
-        <tr>
-            <td (click)="playerAction(2, 0)" [ngClass]="{'viking': insideGame[2][0] === 'Viking',
-            'orc': insideGame[2][0] === 'Orc'}">{{insideGame[2][0]}}
-            </td>
-            <td (click)="playerAction(2, 1)" [ngClass]="{'viking': insideGame[2][1] === 'Viking',
-            'orc': insideGame[2][1] === 'Orc'}">{{insideGame[2][1]}}</td>
-            <td (click)="playerAction(2, 2)" [ngClass]="{'viking': insideGame[2][2] === 'Viking',
-            'orc': insideGame[2][2] === 'Orc'}">{{insideGame[2][2]}}</td>
+        <tr *ngFor="let row of [0,1,2]">
+            <td *ngFor="let column of [0, 1, 2]" (click)="playerAction(row, column)" [ngClass]="{'viking': insideGame[row][column] === 'Viking',
+            'orc': insideGame[row][column] === 'Orc'}">{{insideGame[row][column]}}</td>
         </tr>
     </table>
+
     <div id="gameOver" *ngIf="gameOver">
         <p>Game over!</p>
         <p>A tie between vikings and orcs!</p>

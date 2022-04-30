@@ -17,8 +17,6 @@ export class JogoDaVelhaComponent implements OnInit {
   public gameOver: boolean = false;
   public gameWon: boolean = false;
   public timer: any;
-
-
   public winner: string = '';
 
   constructor() { }
